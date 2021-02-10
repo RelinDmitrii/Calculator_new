@@ -15,8 +15,6 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
-import org.w3c.dom.Text;
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextView ScreenWithSigns;
@@ -51,7 +49,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     String url = "https://cdn.pixabay.com/photo/2020/04/16/10/16/mountain-5050026_960_720.jpg";
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initView();
         initButtons();
         initLayout();
-        ButtonsSetOnClickListener();
+        buttonsSetOnClickListener();
         loadImageToBackGround();
 
 
@@ -99,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         constraintLayout = findViewById(R.id.constraintLayout);
     }
 
-    public void ButtonsSetOnClickListener() {
+    public void buttonsSetOnClickListener() {
         buttonOne.setOnClickListener(this);
         buttonOTwo.setOnClickListener(this);
         buttonThree.setOnClickListener(this);
@@ -236,6 +233,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         instanceState.putString("screenSigns", ScreenWithSigns.getText().toString());
         instanceState.putString("screenNumbers", ScreenWithNumbers.getText().toString());
         instanceState.putString("title", title.getText().toString());
+        instanceState.putBoolean("firstFlag", startOperation);
+        instanceState.putBoolean("secondFlag", startOperationSin);
     }
 
     // Восстановление данных
@@ -245,6 +244,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ScreenWithSigns.setText(instanceState.getString("screenSigns"));
         ScreenWithNumbers.setText(instanceState.getString("screenNumbers"));
         title.setText(instanceState.getString("title"));
+        instanceState.getBoolean("firstFlag");
+        instanceState.getBoolean("secondFlag");
     }
 
 

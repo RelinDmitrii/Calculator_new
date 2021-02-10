@@ -13,4 +13,84 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="Theme.Calculator.Light_My_Option">
+        <item name="colorPrimaryDark">@color/dark_grey</item>
+        <item name="colorPrimaryVariant">@color/dark_grey</item>
+        <item name="colorPrimary">@color/grey</item>
+        <item name="android:textColorPrimary">@color/azure</item>
+        <item name="android:navigationBarColor">@color/dark_grey</item>
+    </style>
+
+    <style name="Calculator_Buttons">
+        <item name="android:textSize">@dimen/textSize_for_all_Buttons</item>
+        <item name="android:backgroundTint">@color/black</item>
+        <item name="android:textColor">@color/azure</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+
+    </style>
+
+
+    <style name="Calculator_Buttons_C">
+        <item name="android:textSize">@dimen/textSize_for_all_Buttons</item>
+        <item name="android:backgroundTint">@color/black</item>
+        <item name="android:textColor">@color/azure</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">@dimen/width_for_Button_C</item>
+        <item name="android:layout_height">wrap_content</item>
+
+    </style>
+
+    <style name="Calculator_Screen">
+        <item name="android:layout_width">@dimen/width_for_screen</item>
+        <item name="android:layout_height">@dimen/height_for_screen</item>
+        <item name="android:gravity">center|end</item>
+        <item name="android:paddingEnd">@dimen/padding_end_for_screen</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/ts_for_screen</item>
+        <item name="android:textStyle">bold</item>
+
+    </style>
+
+
+    <style name="Calculator_Title">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/height_for_title</item>
+        <item name="android:gravity">center|end</item>
+        <item name="android:paddingEnd">@dimen/paddingEnd_for_title</item>
+        <item name="android:textColor">@color/azure</item>
+        <item name="android:textSize">@dimen/ts_for_title</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:text">@string/zero</item>
+
+    </style>
+
+    <style name="Calculator_Title_land" parent="Calculator_Title">
+        <item name="android:layout_height">@dimen/height_for_titleTV</item>
+        <item name="android:paddingEnd">@dimen/puddingEnd_for_titleTV</item>
+        <item name="android:textSize">@dimen/textSize_for_titleTV</item>
+    </style>
+
+    <style name="Calculator_Buttons_land" parent="Calculator_Buttons">
+        <item name="android:layout_height">@dimen/height_for_all_Buttons</item>
+        <item name="android:layout_marginEnd">@dimen/marginEnd_for_all_Buttons_land</item>
+        <item name="android:textSize">@dimen/textSize_for_all_Buttons_land</item>
+    </style>
+
+    <style name="Calculator_right_Buttons_land" parent="Calculator_Buttons_land">
+        <item name="android:layout_marginEnd">@dimen/marginEnd_for_right_Buttons_land</item>
+
+    </style>
+
+    <style name="Calculator_Screen_land">
+        <item name="android:gravity">center|end</item>
+        <item name="android:layout_width">@dimen/width_for_screen_land</item>
+        <item name="android:layout_height">@dimen/height_for_screen_land</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
 </resources>

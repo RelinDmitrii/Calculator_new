@@ -2,10 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:id="@+id/constraintLayout">
+    tools:context=".MainActivity">
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -13,272 +13,195 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.2"/>
+        app:layout_constraintGuide_percent="0.2" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/screenWithNumbers"
-        android:layout_width="206dp"
-        android:layout_height="39dp"
-        android:gravity="center|end"
-        android:textSize="35sp"
-        android:paddingEnd="15dp"
-        android:textColor="@color/black"
+        style="@style/Calculator_Screen"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/screenWithSigns"
         app:layout_constraintTop_toTopOf="@+id/GuideLine" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonSeven"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:backgroundTint="@color/black"
+        android:layout_marginStart="@dimen/marginStart_for_left_Buttons"
         android:text="@string/seven"
-        android:textColor="@color/azure"
-        android:textSize="30sp"
+        style="@style/Calculator_Buttons"
+        app:layout_constraintEnd_toStartOf="@id/buttonEight"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonMultiply"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="15dp"
-        android:backgroundTint="@color/black"
+        style="@style/Calculator_Buttons"
+        android:layout_marginStart="@dimen/margin_for_all_Buttons"
+        android:layout_marginEnd="@dimen/marginEnd_for_right_Buttons"
         android:text="@string/multiplication"
-        android:textColor="@color/azure"
-        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/buttonNine"
         app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonFour"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:backgroundTint="@color/black"
+        android:layout_marginStart="@dimen/marginStart_for_left_Buttons"
         android:text="@string/four"
-        android:textColor="@color/azure"
-        android:textSize="30sp"
+        style="@style/Calculator_Buttons"
+        app:layout_constraintEnd_toStartOf="@id/buttonFive"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonSeven" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonNine"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:backgroundTint="@color/black"
+        android:layout_marginStart="@dimen/margin_for_all_Buttons"
         android:text="@string/nine"
-        android:textColor="@color/azure"
-        android:textSize="30sp"
+        style="@style/Calculator_Buttons"
+        app:layout_constraintEnd_toStartOf="@id/buttonMultiply"
         app:layout_constraintStart_toEndOf="@+id/buttonEight"
         app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonEight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:backgroundTint="@color/black"
+        android:layout_marginStart="@dimen/margin_for_all_Buttons"
         android:text="@string/eight"
-        android:textColor="@color/azure"
-        android:textSize="30sp"
+        style="@style/Calculator_Buttons"
+        app:layout_constraintEnd_toStartOf="@id/buttonNine"
         app:layout_constraintStart_toEndOf="@+id/buttonSeven"
         app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonTwo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:backgroundTint="@color/black"
+        android:layout_marginStart="@dimen/margin_for_all_Buttons"
         android:text="@string/two"
-        android:textColor="@color/azure"
-        android:textSize="30sp"
+        style="@style/Calculator_Buttons"
+        app:layout_constraintEnd_toStartOf="@id/buttonThree"
         app:layout_constraintStart_toEndOf="@+id/buttonOne"
         app:layout_constraintTop_toBottomOf="@+id/buttonFive" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonOne"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:backgroundTint="@color/black"
+        android:layout_marginStart="@dimen/marginStart_for_left_Buttons"
         android:text="@string/one"
-        android:textColor="@color/azure"
-        android:textSize="30sp"
+        style="@style/Calculator_Buttons"
+        app:layout_constraintEnd_toStartOf="@id/buttonTwo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonFour" />
 
     <Button
         android:id="@+id/buttonThree"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:backgroundTint="@color/black"
+        android:layout_marginStart="@dimen/margin_for_all_Buttons"
         android:text="@string/three"
-        android:textColor="@color/azure"
-        android:textSize="30sp"
+        style="@style/Calculator_Buttons"
+        app:layout_constraintEnd_toStartOf="@id/buttonPlus"
         app:layout_constraintStart_toEndOf="@+id/buttonTwo"
         app:layout_constraintTop_toBottomOf="@+id/buttonSix" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonEqually"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:backgroundTint="@color/black"
+        android:layout_marginStart="@dimen/margin_for_all_Buttons"
         android:text="@string/equally"
-        android:textColor="@color/azure"
-
-        android:textSize="30sp"
+        style="@style/Calculator_Buttons"
+        app:layout_constraintEnd_toStartOf="@id/buttonSplit"
         app:layout_constraintStart_toEndOf="@+id/buttonZero"
         app:layout_constraintTop_toBottomOf="@+id/buttonThree" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonZero"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:backgroundTint="@color/black"
+        android:layout_marginStart="@dimen/margin_for_all_Buttons"
         android:text="@string/zero"
-        android:textColor="@color/azure"
-        android:textSize="30sp"
+        style="@style/Calculator_Buttons"
+        app:layout_constraintEnd_toStartOf="@id/buttonEqually"
         app:layout_constraintStart_toEndOf="@+id/buttonPlusMinus"
         app:layout_constraintTop_toBottomOf="@+id/buttonTwo" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonPlus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="15dp"
-        android:backgroundTint="@color/black"
+        android:layout_marginStart="@dimen/margin_for_all_Buttons"
+        android:layout_marginEnd="@dimen/marginEnd_for_right_Buttons"
         android:text="@string/plus"
-        android:textColor="@color/azure"
-        android:textSize="30sp"
+        style="@style/Calculator_Buttons"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/buttonThree"
         app:layout_constraintTop_toBottomOf="@+id/buttonMinus" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonSix"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:backgroundTint="@color/black"
+        android:layout_marginStart="@dimen/margin_for_all_Buttons"
         android:text="@string/six"
-        android:textColor="@color/azure"
-        android:textSize="30sp"
+        style="@style/Calculator_Buttons"
+        app:layout_constraintEnd_toStartOf="@id/buttonMinus"
         app:layout_constraintStart_toEndOf="@+id/buttonFive"
         app:layout_constraintTop_toBottomOf="@+id/buttonNine" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonFive"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:backgroundTint="@color/black"
+        android:layout_marginStart="@dimen/margin_for_all_Buttons"
         android:text="@string/five"
-        android:textColor="@color/azure"
-        android:textSize="30sp"
+        style="@style/Calculator_Buttons"
+        app:layout_constraintEnd_toStartOf="@id/buttonSix"
         app:layout_constraintStart_toEndOf="@+id/buttonFour"
         app:layout_constraintTop_toBottomOf="@+id/buttonEight" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonMinus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="15dp"
-        android:backgroundTint="@color/black"
+        android:layout_marginStart="@dimen/margin_for_all_Buttons"
+        android:layout_marginEnd="@dimen/marginEnd_for_right_Buttons"
         android:text="@string/minus"
-        android:textColor="@color/azure"
-        android:textSize="30sp"
+        style="@style/Calculator_Buttons"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/buttonSix"
         app:layout_constraintTop_toBottomOf="@+id/buttonMultiply" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonPlusMinus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:backgroundTint="@color/black"
+        android:layout_marginStart="@dimen/marginStart_for_left_Buttons"
         android:text="@string/plus_minus"
-        android:textColor="@color/azure"
-        android:textSize="30sp"
+        style="@style/Calculator_Buttons"
+        app:layout_constraintEnd_toStartOf="@id/buttonZero"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonOne" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonSplit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="15dp"
-        android:backgroundTint="@color/black"
+        android:layout_marginStart="@dimen/margin_for_all_Buttons"
+        android:layout_marginEnd="@dimen/marginEnd_for_right_Buttons"
         android:text="@string/split"
-        android:textColor="@color/azure"
-        android:textSize="30sp"
+        style="@style/Calculator_Buttons"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/buttonEqually"
         app:layout_constraintTop_toBottomOf="@+id/buttonPlus" />
 
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonC"
-        android:layout_width="280dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:backgroundTint="@color/black"
+        android:layout_marginStart="@dimen/marginStart_for_left_Buttons"
         android:text="@string/discharge"
-        android:textColor="@color/azure"
-        android:textSize="30sp"
+        style="@style/Calculator_Buttons_C"
+        app:layout_constraintEnd_toStartOf="@id/buttonResetOne"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonPlusMinus" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonResetOne"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="15dp"
-        android:backgroundTint="@color/black"
+        android:layout_marginStart="@dimen/margin_for_all_Buttons"
+        android:layout_marginEnd="@dimen/marginEnd_for_right_Buttons"
         android:text="@string/resetOne"
-        android:textColor="@color/azure"
-        android:textSize="30sp"
+        style="@style/Calculator_Buttons"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toEndOf="@+id/buttonC"
         app:layout_constraintTop_toBottomOf="@+id/buttonZero" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/titleTextView"
-        android:layout_width="match_parent"
-        android:layout_height="84dp"
-        android:gravity="center|end"
-        android:text="@string/zero"
-        android:textColor="@color/azure"
-        android:textSize="70sp"
-        android:textStyle="bold"
-        android:paddingEnd="15dp"
+        style="@style/Calculator_Title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/screenWithNumbers" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/screenWithSigns"
-        android:layout_width="0dp"
-        android:layout_height="39dp"
-        android:gravity="center|end"
-        android:textSize="35sp"
-        android:paddingEnd="15dp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
+        style="@style/Calculator_Screen"
         app:layout_constraintEnd_toStartOf="@+id/screenWithNumbers"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/GuideLine" />
