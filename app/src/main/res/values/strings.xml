@@ -20,4 +20,8 @@
     <string name="split">/</string>
     <string name="InitValue">0</string>
     <string name="plus_minus">+/-</string>
+    <string name="title_settings">Here you can choose a theme for your application</string>
+    <string name="light_settings">Light</string>
+    <string name="night_settings">Night</string>
+    <string name="button_apply">apply</string>
 </resources>
