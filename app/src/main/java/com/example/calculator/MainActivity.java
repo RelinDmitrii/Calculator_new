@@ -1,13 +1,18 @@
 package com.example.calculator;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -17,12 +22,13 @@ import com.squareup.picasso.Target;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private static final String NameSharedPreference = "LOGIN";
+    private static final String IsDarkTheme = "IS_DARK_THEME";
+
     TextView ScreenWithSigns;
     TextView ScreenWithNumbers;
     TextView title;
 
-    boolean startOperation = false;
-    boolean startOperationSin = false;
 
     Button buttonOne;
     Button buttonOTwo;
@@ -54,14 +60,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        calculator = new Calculator();
+
+        if (!isDarkTheme()) {
+            setTheme(R.style.Theme_Calculator_Light_My_Option);
+        } else {
+            setTheme(R.style.Theme_Calculator_Night_My_Option);
+        }
+
+        setContentView(R.layout.activity_main);
+
+
+
         initView();
+        calculator = new Calculator();
+        refreshScreens();
         initButtons();
         initLayout();
         buttonsSetOnClickListener();
         loadImageToBackGround();
 
 
+
+    }
+
+
+    public void refreshScreens() {
+        ScreenWithSigns.setText(calculator.inputValue.get(Calculator.KEY_ScreenWithSigns));
+        ScreenWithNumbers.setText(calculator.inputValue.get(Calculator.KEY_ScreenWithNumbers));
+        title.setText(calculator.inputValue.get(Calculator.KEY_title));
     }
 
     public void initView() {
@@ -143,109 +169,74 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case (R.id.buttonPlus): {
-                calculateAndSet(ScreenWithSigns, ScreenWithNumbers, title, "+");
-                break;
-            }
-            case (R.id.buttonMinus): {
-                calculateAndSet(ScreenWithSigns, ScreenWithNumbers, title, "-");
-                break;
-            }
-            case (R.id.buttonSplit): {
-                calculateAndSet(ScreenWithSigns, ScreenWithNumbers, title, "/");
-                break;
-            }
-            case (R.id.buttonMultiply): {
-                calculateAndSet(ScreenWithSigns, ScreenWithNumbers, title, "*");
-                break;
-            }
-
-            case (R.id.buttonPlusMinus): {
-                if (title.getText().charAt(0) != '-') {
-                    title.setText("-" + title.getText());
-                } else {
-                    title.setText(title.getText().toString().replace("-", ""));
-                }
-                break;
-
-            }
-            case (R.id.buttonResetOne): {
-                if (!title.getText().equals("0")) {
-                    if (title.getText().length() == 1) {
-                        title.setText("0");
-                    } else {
-                        title.setText(title.getText().toString().substring(0, title.getText().length() - 1));
-                    }
-                }
-                break;
-            }
-            case (R.id.buttonC): {
-                ScreenWithSigns.setText("");
-                ScreenWithNumbers.setText("");
-                title.setText("0");
-                break;
-            }
-            case (R.id.buttonEqually): {
-                ButtonEqually(ScreenWithSigns, ScreenWithNumbers, title);
-                break;
-            }
-            default: {
-                String clickNumber = ((Button) v).getText().toString();
-                if (title.getText().equals("0")) {
-                    title.setText(clickNumber);
-                } else {
-                    if (startOperation) {
-                        title.setText("");
-                        startOperation = false;
-                    }
-                    startOperationSin = true;
-                    title.setText(title.getText() + clickNumber);
-                }
-            }
-        }
-    }
-
-    public void calculateAndSet(TextView screenSigns, TextView screenNumbers, TextView screenTitle, String operator) {
-
-        screenSigns.setText(operator);
-        startOperation = true;
-        if (screenNumbers.getText().length() > 0 && startOperationSin) {
-            String result = String.valueOf(calculator.Calculate(screenNumbers.getText().toString(), screenTitle.getText().toString(), screenSigns.getText().toString()));
-            screenNumbers.setText(result);
-            screenTitle.setText(result);
-        }
-        startOperationSin = false;
-        screenNumbers.setText(screenTitle.getText());
-    }
-
-    public void ButtonEqually(TextView screenSigns, TextView screenNumbers, TextView screenTitle) {
-        String result = String.valueOf(calculator.Calculate(screenNumbers.getText().toString(), screenTitle.getText().toString(), screenSigns.getText().toString()));
-        screenNumbers.setText(result);
-        screenTitle.setText(result);
-        startOperationSin = false;
+        calculator.input(((Button) v).getText().toString());
+        refreshScreens();
     }
 
 
     @Override
     public void onSaveInstanceState(@NonNull Bundle instanceState) {
         super.onSaveInstanceState(instanceState);
-        instanceState.putString("screenSigns", ScreenWithSigns.getText().toString());
-        instanceState.putString("screenNumbers", ScreenWithNumbers.getText().toString());
-        instanceState.putString("title", title.getText().toString());
-        instanceState.putBoolean("firstFlag", startOperation);
-        instanceState.putBoolean("secondFlag", startOperationSin);
+        instanceState.putString("screenSigns", calculator.inputValue.get(Calculator.KEY_ScreenWithSigns));
+        instanceState.putString("screenNumbers", calculator.inputValue.get(Calculator.KEY_ScreenWithNumbers));
+        instanceState.putString("title", calculator.inputValue.get(Calculator.KEY_title));
+        instanceState.putBoolean("firstFlag", calculator.startOperation);
+        instanceState.putBoolean("secondFlag", calculator.startOperationSin);
     }
 
     // Восстановление данных
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle instanceState) {
         super.onRestoreInstanceState(instanceState);
-        ScreenWithSigns.setText(instanceState.getString("screenSigns"));
-        ScreenWithNumbers.setText(instanceState.getString("screenNumbers"));
-        title.setText(instanceState.getString("title"));
-        instanceState.getBoolean("firstFlag");
-        instanceState.getBoolean("secondFlag");
+        calculator.inputValue.put(Calculator.KEY_ScreenWithSigns, instanceState.getString("screenSigns"));
+        calculator.inputValue.put(Calculator.KEY_ScreenWithNumbers,instanceState.getString("screenNumbers"));
+        calculator.inputValue.put(Calculator.KEY_title,instanceState.getString("title"));
+        calculator.startOperation = instanceState.getBoolean("firstFlag");
+        calculator.startOperationSin = instanceState.getBoolean("secondFlag");
+        refreshScreens();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        menu.add("Settings");
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getTitle().equals("Settings")) {
+            startActivityForResult(new Intent(this, Settings_themes.class), 1);
+        }
+        return false;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == 1) {
+            if (data.getStringExtra("Theme").equals("Light")) {
+                setDarkTheme(false);
+                recreate();
+
+            } else {
+                setDarkTheme(true);
+                recreate();
+            }
+            recreate();
+        }
+
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    protected boolean isDarkTheme() {
+        SharedPreferences sharedPref = getSharedPreferences(NameSharedPreference, MODE_PRIVATE);
+        return sharedPref.getBoolean(IsDarkTheme, true);
+    }
+
+    protected void setDarkTheme(boolean isDarkTheme) {
+        SharedPreferences sharedPref = getSharedPreferences(NameSharedPreference, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putBoolean(IsDarkTheme, isDarkTheme);
+        editor.apply();
     }
 
 

@@ -22,6 +22,15 @@
         <item name="android:navigationBarColor">@color/dark_grey</item>
     </style>
 
+
+    <style name="Theme.Calculator.Night_My_Option">
+        <item name="colorPrimaryDark">@color/dark_grey</item>
+        <item name="colorPrimaryVariant">@color/dark_grey</item>
+        <item name="colorPrimary">@color/black</item>
+        <item name="android:textColorPrimary">@color/azure</item>
+        <item name="android:navigationBarColor">@color/black</item>
+    </style>
+
     <style name="Calculator_Buttons">
         <item name="android:textSize">@dimen/textSize_for_all_Buttons</item>
         <item name="android:backgroundTint">@color/black</item>

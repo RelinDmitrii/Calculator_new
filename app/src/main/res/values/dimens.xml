@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="height_for_screen">39dp</dimen>
+    <dimen name="padding_end_for_screen">15dp</dimen>
+    <dimen name="ts_for_screen">35sp</dimen>
+    <dimen name="marginStart_for_left_Buttons">15dp</dimen>
+    <dimen name="marginEnd_for_right_Buttons">15dp</dimen>
+    <dimen name="margin_for_all_Buttons">8dp</dimen>
+    <dimen name="textSize_for_all_Buttons">30sp</dimen>
+    <dimen name="height_for_title">84dp</dimen>
+    <dimen name="ts_for_title">70sp</dimen>
+    <dimen name="paddingEnd_for_title">15dp</dimen>
+    <dimen name="height_for_all_Buttons">0dp</dimen>
+    <dimen name="marginTop_for_screenWN">4dp</dimen>
+    <dimen name="paddingEnd_for_screenWN">30dp</dimen>
+    <dimen name="height_for_titleTV">70dp</dimen>
+    <dimen name="puddingEnd_for_titleTV">20dp</dimen>
+    <dimen name="textSize_for_titleTV">50sp</dimen>
+    <dimen name="textSize_for_all_Buttons_land">20sp</dimen>
+    <dimen name="marginEnd_for_right_Buttons_land">25dp</dimen>
+    <dimen name="marginEnd_for_all_Buttons_land">15dp</dimen>
+    <dimen name="width_for_Button_C">280dp</dimen>
+    <dimen name="width_for_screen">0dp</dimen>
+    <dimen name="width_for_screen_land">0dp</dimen>
+    <dimen name="height_for_screen_land">34dp</dimen>
+</resources>
