@@ -8,4 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="azure">#30CEFB</color>
+    <color name="dark_grey">#4A4D4E</color>
+    <color name="grey">#9DA4A6</color>
+
 </resources>

@@ -2,23 +2,23 @@ package com.example.calculator;
 
 public class Calculator {
 
-    public long Calculate (String first, String second, String operator){
+    public long Calculate(String first, String second, String operator) {
 
-        long a = Long.parseLong(first);
-        long b = Long.parseLong(second);
+        long firstNumber = Long.parseLong(first);
+        long secondNumber = Long.parseLong(second);
 
-        switch (operator){
-            case"+":
-                return a+b;
-            case"-":
-                return a-b;
+        switch (operator) {
+            case "+":
+                return firstNumber + secondNumber;
+            case "-":
+                return firstNumber - secondNumber;
             case "*":
-                return a*b;
+                return firstNumber * secondNumber;
             case "/":
-                if (b == 0){
+                if (secondNumber == 0) {
                     return 0;
                 }
-                return a/b;
+                return firstNumber / secondNumber;
         }
         return 0;
     }
